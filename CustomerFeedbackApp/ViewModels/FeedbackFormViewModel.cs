@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using static CustomerFeedbackApp.ViewModels.MainViewModel;
 using System.Windows.Input;
 using System.Windows;
+using CustomerFeedbackApp.Helpers;
+using CustomerFeedbackApp.Models;
 
 namespace CustomerFeedbackApp.ViewModels
 {
@@ -43,16 +45,39 @@ namespace CustomerFeedbackApp.ViewModels
 
         private void SubmitFeedback(object parameter)
         {
-            string feedbackMessage = $"Name: {CustomerName}\n" +
-                                      $"Email: {CustomerEmail}\n" +
-                                      $"Product/Service: {SelectedProduct}\n" +
-                                      $"Comment: {CustomerComment}";
+            if (string.IsNullOrWhiteSpace(CustomerName) || string.IsNullOrWhiteSpace(CustomerComment))
+            {
+                MessageBox.Show("Name and comment are required!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
-            // Here you would save to a database or call a service
-            MessageBox.Show($"Feedback Submitted:\n{feedbackMessage}", "Feedback Confirmation");
+            var feedback = new Feedback
+            {
+                CustomerName = CustomerName,
+                CustomerEmail = CustomerEmail,
+                Product = SelectedProduct,
+                Comment = CustomerComment
+            };
 
-            // Close the window after submission
-            _view.CloseWindow();
+            try
+            { 
+
+                DatabaseHelper.SaveFeedback(feedback);
+
+                MessageBox.Show("Feedback submitted successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                // Clear fields after successful submission
+                CustomerName = string.Empty;
+                CustomerEmail = string.Empty;
+                CustomerComment = string.Empty;
+                SelectedProduct = null;
+
+                _view.CloseWindow();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

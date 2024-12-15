@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows;
+using CustomerFeedbackApp.Views;
 
 namespace CustomerFeedbackApp.ViewModels
 {
@@ -21,14 +22,14 @@ namespace CustomerFeedbackApp.ViewModels
 
         private void OpenFeedbackForm(object parameter)
         {
-            var feedbackForm = new Views.FeedbackForm();
+            var feedbackForm = new FeedbackForm();
             feedbackForm.Show();
         }
 
         private void OpenAdminLogin(object parameter)
         {
-            MessageBox.Show("Opening Admin Login...");
-            // Navigate to Login Page for Admins
+            var adminLogin = new AdminLogin();
+            adminLogin.Show();
         }
         public class RelayCommand : ICommand
         {
