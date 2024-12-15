@@ -9,6 +9,7 @@ using static CustomerFeedbackApp.ViewModels.MainViewModel;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows;
+using CustomerFeedbackApp.Views;
 
 namespace CustomerFeedbackApp.ViewModels
 {
@@ -45,7 +46,7 @@ namespace CustomerFeedbackApp.ViewModels
 
         private void ExecuteLogin(object parameter)
         {
-            MessageBox.Show($"Username: {Username}, Password: {Password}");
+            var currentWindow = parameter as Window; // The login window reference
 
             try
             {
@@ -65,11 +66,10 @@ namespace CustomerFeedbackApp.ViewModels
                         return;
                     }
 
-                    MessageBox.Show($"Retrieved hash from database: {dbPasswordHash}");
-
                     if (dbPasswordHash == ComputeHash(Password))
                     {
-                        MessageBox.Show("Login successful!");
+                        NavigateToAdminDashboard();
+                        currentWindow?.Close();
                     }
                     else
                     {
@@ -85,9 +85,14 @@ namespace CustomerFeedbackApp.ViewModels
 
         private void NavigateToAdminDashboard()
         {
-            // Navigate to Admin Dashboard View
-            MessageBox.Show("Login successful!", "Success");
-            // Implement navigation logic here
+            // Create an instance of the AdminDashboard window
+            var adminDashboard = new AdminDashboard();
+            adminDashboard.Show(); // Show the window
+
+            // Close the current login window (optional, depending on your flow)
+            Application.Current.MainWindow.Close();
+
+            //Application.Current.MainWindow = adminDashboard;
         }
 
         private string ComputeHash(string input)

@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\Jaren\source\repos\CustomerFeedbackApp\CustomerFeedbackApp\App.xaml
-3-847087075
+4-1274640621
 
-12312474058
+14-1115175158
 2222087520434
-MainWindow.xaml;Views\AdminLogin.xaml;Views\FeedbackForm.xaml;
+MainWindow.xaml;Views\AdminDashboard.xaml;Views\AdminLogin.xaml;Views\FeedbackForm.xaml;
 
 False
 

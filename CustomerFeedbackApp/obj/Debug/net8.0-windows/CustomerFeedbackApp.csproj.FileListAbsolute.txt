@@ -72,3 +72,5 @@ C:\Users\Jaren\source\repos\CustomerFeedbackApp\CustomerFeedbackApp\bin\Debug\ne
 C:\Users\Jaren\source\repos\CustomerFeedbackApp\CustomerFeedbackApp\bin\Debug\net8.0-windows\runtimes\win-x64\native\krbcc64.dll
 C:\Users\Jaren\source\repos\CustomerFeedbackApp\CustomerFeedbackApp\obj\Debug\net8.0-windows\Views\AdminLogin.g.cs
 C:\Users\Jaren\source\repos\CustomerFeedbackApp\CustomerFeedbackApp\obj\Debug\net8.0-windows\Views\AdminLogin.baml
+C:\Users\Jaren\source\repos\CustomerFeedbackApp\CustomerFeedbackApp\obj\Debug\net8.0-windows\Views\AdminDashboard.g.cs
+C:\Users\Jaren\source\repos\CustomerFeedbackApp\CustomerFeedbackApp\obj\Debug\net8.0-windows\Views\AdminDashboard.baml
