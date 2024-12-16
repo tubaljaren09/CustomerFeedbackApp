@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows;
 using CustomerFeedbackApp.Models;
+using CustomerFeedbackApp.Views;
 
 namespace CustomerFeedbackApp.ViewModels
 {
@@ -89,8 +90,28 @@ namespace CustomerFeedbackApp.ViewModels
 
         private void ExecuteEdit(Feedback feedback)
         {
-            // Placeholder for editing logic
-            MessageBox.Show($"Edit Feedback ID: {feedback.FeedbackId}");
+            if (feedback == null)
+            {
+                MessageBox.Show("No feedback selected.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            // Create an instance of the EditFeedbackViewModel with the selected feedback
+            var editFeedbackViewModel = new EditFeedbackViewModel(feedback);
+
+            // Create and show the Edit Feedback window
+            var editWindow = new EditFeedback
+            {
+                DataContext = editFeedbackViewModel // Bind the ViewModel to the View
+            };
+
+            // Set the CloseAction to close the window
+            editFeedbackViewModel.CloseAction = () => editWindow.Close();
+
+            editWindow.ShowDialog();
+
+            // Refresh feedback data after editing
+            LoadFeedbackData();
         }
 
         private void ExecuteDelete(Feedback feedback)
@@ -102,7 +123,7 @@ namespace CustomerFeedbackApp.ViewModels
                     using (var connection = new MySqlConnection(DatabaseHelper.ConnectionString))
                     {
                         connection.Open();
-                        string query = "DELETE FROM Feedback WHERE FeedbackId = @FeedbackId";
+                        string query = "DELETE FROM feedbacks WHERE FeedbackId = @FeedbackId";
                         using (var command = new MySqlCommand(query, connection))
                         {
                             command.Parameters.AddWithValue("@FeedbackId", feedback.FeedbackId);

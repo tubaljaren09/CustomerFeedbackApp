@@ -74,3 +74,5 @@ C:\Users\Jaren\source\repos\CustomerFeedbackApp\CustomerFeedbackApp\obj\Debug\ne
 C:\Users\Jaren\source\repos\CustomerFeedbackApp\CustomerFeedbackApp\obj\Debug\net8.0-windows\Views\AdminLogin.baml
 C:\Users\Jaren\source\repos\CustomerFeedbackApp\CustomerFeedbackApp\obj\Debug\net8.0-windows\Views\AdminDashboard.g.cs
 C:\Users\Jaren\source\repos\CustomerFeedbackApp\CustomerFeedbackApp\obj\Debug\net8.0-windows\Views\AdminDashboard.baml
+C:\Users\Jaren\source\repos\CustomerFeedbackApp\CustomerFeedbackApp\obj\Debug\net8.0-windows\Views\EditFeedback.g.cs
+C:\Users\Jaren\source\repos\CustomerFeedbackApp\CustomerFeedbackApp\obj\Debug\net8.0-windows\Views\EditFeedback.baml
